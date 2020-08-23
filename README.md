@@ -29,6 +29,7 @@ Completed the following queries:
   
   ## Additional Analysis
   Exported data into a Pandas DataFrame and created visualizations analyzing:
+  
     The most common salary ranges for employees
     
    ![Visualizations/salary_ranges.png](Visualizations/salary_ranges.png)
