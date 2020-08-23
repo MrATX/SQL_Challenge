@@ -1,7 +1,7 @@
 # SQL_Challenge
 
 ## Creating ERD & Schema
-Using employee data from a fictional electronics company, designed an ERD diagram and exported schema using GenMyModel.
+Using employee data from a fictional electronics company, designed an ERD diagram conforming to 3NF and exported schema using GenMyModel.
 
 ![Visualizations/ERD](Visualizations/ERD.png)
 
