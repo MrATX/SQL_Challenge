@@ -1,5 +1,7 @@
 -- Create schemas
 
+-- AFTER CREATING TABLES, STOP TO IMPORT CSVs BEFORE CONTINUING TO FKs
+
 -- Create tables
 CREATE TABLE IF NOT EXISTS titles
 (
@@ -11,7 +13,7 @@ CREATE TABLE IF NOT EXISTS titles
 CREATE TABLE IF NOT EXISTS emps
 (
     emp_no INTEGER NOT NULL,
-    emp_title VARCHAR(30),
+    title_id VARCHAR(30) NOT NULL,
     birth_date DATE,
     first_name VARCHAR(30),
     last_name VARCHAR(30),
@@ -37,8 +39,8 @@ CREATE TABLE IF NOT EXISTS dept_mgr
 CREATE TABLE IF NOT EXISTS dept_emp
 (
     emp_no INTEGER NOT NULL,
-    dep_no VARCHAR(30) NOT NULL,
-    PRIMARY KEY(emp_no, dep_no)
+    dept_no VARCHAR(30) NOT NULL,
+    PRIMARY KEY(emp_no, dept_no)
 );
 
 CREATE TABLE IF NOT EXISTS depts
@@ -48,6 +50,7 @@ CREATE TABLE IF NOT EXISTS depts
     PRIMARY KEY(dept_no)
 );
 
+-- HOLD UP! IMPORT CSVs BEFORE CREATING FKs
 
 -- Create FKs
 ALTER TABLE salaries
@@ -56,9 +59,9 @@ ALTER TABLE salaries
     MATCH SIMPLE
 ;
     
-ALTER TABLE emps
-    ADD    FOREIGN KEY (emp_title)
-    REFERENCES titles(title_id)
+ALTER TABLE dept_emp
+    ADD    FOREIGN KEY (emp_no)
+    REFERENCES emps(emp_no)
     MATCH SIMPLE
 ;
     
@@ -68,15 +71,9 @@ ALTER TABLE dept_mgr
     MATCH SIMPLE
 ;
     
-ALTER TABLE dept_emp
-    ADD    FOREIGN KEY (emp_no)
-    REFERENCES emps(emp_no)
-    MATCH SIMPLE
-;
-    
-ALTER TABLE dept_emp
-    ADD    FOREIGN KEY (dep_no)
-    REFERENCES depts(dept_no)
+ALTER TABLE emps
+    ADD    FOREIGN KEY (title_id)
+    REFERENCES titles(title_id)
     MATCH SIMPLE
 ;
     
@@ -86,9 +83,9 @@ ALTER TABLE dept_mgr
     MATCH SIMPLE
 ;
     
-ALTER TABLE emps
-    ADD    FOREIGN KEY (emp_title)
-    REFERENCES titles(title_id)
+ALTER TABLE dept_emp
+    ADD    FOREIGN KEY (dept_no)
+    REFERENCES depts(dept_no)
     MATCH SIMPLE
 ;
     
