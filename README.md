@@ -27,7 +27,7 @@ Completed the following queries:
 
   8. In descending order, list the frequency count of employee last names, i.e., how many employees share each last name.
   
-  ## Additional Analysis
+  ## Additional Analysis (Bonus)
   Exported data into a Pandas DataFrame and created visualizations analyzing the most common salary ranges for employees, and the average salary by title.
     
    ![Visualizations/salary_ranges.png](Visualizations/salary_ranges.png)
